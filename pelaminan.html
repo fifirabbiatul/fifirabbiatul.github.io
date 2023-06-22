@@ -1,0 +1,214 @@
+<DOCTYPE html>
+    <html>
+    <head>
+        <title>Naura Pelaminan</title>
+    </head>
+    <body>
+            <a href="naurapelaminan.php" t><button>Back</button></a>
+
+            <section class="container">
+            <div class="content-slide">
+                <div class="imgslide fade">
+                    <img src="pelaminan/p1.jpg" alt="">
+                </div>
+    
+                <div class="imgslide fade">
+                    <img src="pelaminan/p2.jpg" alt="">
+                </div>
+    
+                <div class="imgslide fade">
+                    <img src="pelaminan/p3.jpg" alt="">
+                </div>
+    
+                <div class="imgslide fade">
+                    <img src="pelaminan/p4.jpg" alt="">
+                </div>
+                <div class="imgslide fade">
+                    <img src="pelaminan/p5.jpg" alt="">
+                </div>
+                <div class="imgslide fade">
+                    <img src="pelaminan/p6.jpg" alt="">
+                </div>
+                <div class="imgslide fade">
+                    <img src="pelaminan/p7.jpg" alt="">
+                </div>
+    
+                <a class="prev" onClick="nextslide(-1)">&#10094;</a>
+                <a class="next" onClick="nextslide(1)">&#10095;</a> 
+            </div>
+    
+            <div class="page">
+                <span class="dot" onClick="dotslide(1)"></span>
+                <span class="dot" onClick="dotslide(2)"></span>
+                <span class="dot" onClick="dotslide(3)"></span>
+                <span class="dot" onClick="dotslide(4)"></span>
+                <span class="dot" onClick="dotslide(5)"></span>
+                <span class="dot" onClick="dotslide(6)"></span>
+                <span class="dot" onClick="dotslide(7)"></span>
+            </div>
+
+    
+        </section>
+    
+        <script>
+            var slideIndex = 1;
+                showSlide(slideIndex);
+    
+            function nextslide(n){
+                showSlide(slideIndex += n);
+            }
+    
+            function dotslide(n){
+                showSlide(slideIndex = n);
+            }
+    
+            function showSlide(n) {
+                var i;
+                var slides = document.getElementsByClassName("imgslide");
+                var dot = document.getElementsByClassName("dot");
+                
+                if (n > slides.length) {
+                    slideIndex = 1
+                }
+                if (n < 1) {
+                    slideIndex = slides.length;
+                }
+                for (i = 0; i < slides.length; i++) {
+                    
+                    slides[i].style.display = "none";
+                }
+    
+                for (i = 0; i < slides.length; i++) {
+                    
+                    dot[i].className = dot[i].className.replace(" active", "");
+                }
+    
+                slides[slideIndex - 1].style.display = "block";
+    
+                dot[slideIndex - 1].className += " active";
+                
+    
+    
+            }
+        </script>
+</body>
+</html>
+
+<style>
+.container {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px 0 40px 0;
+}
+
+/* Slideshow container */
+.content-slide {
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+}
+.content-slide h2{
+    color: rgb(179, 74, 74);
+    font-size: 75px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.imgslide {
+    display: none;
+}
+
+img {
+    vertical-align: middle;
+    width:100%;height: 550px;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 55%;
+    width: auto;
+    padding: 16px;
+    color: rgb(255, 254, 224);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.pre:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(0, 0, 0);
+}
+
+
+/* resposive */
+
+@media screen and (max-width: 800px) {
+
+    .content-slide {
+        padding: 8px 50px 12px 50px;
+    }
+
+    .next {
+        right: 50px;
+        border-radius: 3px 0 0 3px;
+    }
+    
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4;
+    }    
+    to {
+        opacity: 1;
+    }
+}
+
+.container .page {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.page .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    border-radius: 50%;
+}
+
+.page .active,
+.page .dot:hover {
+    background-color: #ce0000;
+}
+    </style>
